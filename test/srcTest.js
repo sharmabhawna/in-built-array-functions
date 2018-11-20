@@ -33,20 +33,23 @@ describe("map", function(){
       assert.deepEqual(map([], increment), []);
       assert.deepEqual(map([0], increment), [1]);
       assert.deepEqual(map([1], increment), [2]);
+      assert.deepEqual(map([-1], increment), [0]);
       assert.deepEqual(map([1,2], increment), [2,3]);
+      assert.deepEqual(map([-1,-2], increment), [0,-1]);
       assert.deepEqual(map([1,0,2], increment), [2,1,3]);
+      assert.deepEqual(map([-1,0,-2], increment), [0,1,-1]);
     });
   });
-});
-
-describe("map", function(){
   describe("with decrement", function(){
     it("should decrement all array elements", function(){
       assert.deepEqual(map([], decrement), []);
       assert.deepEqual(map([0], decrement), [-1]);
       assert.deepEqual(map([1], decrement), [0]);
+      assert.deepEqual(map([-1], decrement), [-2]);
       assert.deepEqual(map([1,2], decrement), [0,1]);
+      assert.deepEqual(map([-1,-2], decrement), [-2,-3]);
       assert.deepEqual(map([1,0,2], decrement), [0,-1,1]);
+      assert.deepEqual(map([-1,0,-2], decrement), [-2,-1,-3]);
     });
   });
 });
