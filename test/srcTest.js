@@ -38,3 +38,15 @@ describe("map", function(){
     });
   });
 });
+
+describe("map", function(){
+  describe("with decrement", function(){
+    it("should decrement all array elements", function(){
+      assert.deepEqual(map([], decrement), []);
+      assert.deepEqual(map([0], decrement), [-1]);
+      assert.deepEqual(map([1], decrement), [0]);
+      assert.deepEqual(map([1,2], decrement), [0,1]);
+      assert.deepEqual(map([1,0,2], decrement), [0,-1,1]);
+    });
+  });
+});
