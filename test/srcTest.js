@@ -6,7 +6,8 @@ const { map } = srcLib;
 
 const { increment,
   decrement,
-  square } = testLib;
+  square,
+  cube } = testLib;
 
 describe("increment", function(){
   it("should increment positive number", function(){
@@ -58,6 +59,11 @@ describe("map", function(){
   describe("with square",function(){
     it("should square all array elements", function(){
       assert.deepEqual(map([1,2], square), [1,4]);
+    });
+  });
+  describe("with cube",function(){
+    it("should cube all array elements", function(){
+      assert.deepEqual(map([1,2], cube), [1,8]);
     });
   });
 });
