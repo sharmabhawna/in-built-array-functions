@@ -2,4 +2,9 @@ const increment = function(number) {
   return ++number;
 }
 
-module.exports = { increment };
+const decrement = function(number) {
+  return --number;
+}
+
+module.exports = { increment,
+  decrement };
