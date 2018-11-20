@@ -8,4 +8,8 @@ describe("increment", function(){
     assert.equal(increment(1), 2);
     assert.equal(increment(4), 5);
   });
+  it("should increment negative number", function(){
+    assert.equal(increment(-1), 0);
+    assert.equal(increment(-4), -3);
+  });
 });
