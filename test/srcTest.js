@@ -1,9 +1,12 @@
 const assert = require('assert');
-const lib = require('../src.js');
+const srcLib = require('../src.js');
+const testLib = require('./utilSrcTest.js');
+
+const { map } = srcLib;
 
 const { increment,
   decrement,
-  map } = lib;
+  square } = testLib;
 
 describe("increment", function(){
   it("should increment positive number", function(){
@@ -50,6 +53,11 @@ describe("map", function(){
       assert.deepEqual(map([-1,-2], decrement), [-2,-3]);
       assert.deepEqual(map([1,0,2], decrement), [0,-1,1]);
       assert.deepEqual(map([-1,0,-2], decrement), [-2,-1,-3]);
+    });
+  });
+  describe("with square",function(){
+    it("should square all array elements", function(){
+      assert.deepEqual(map([1,2], square), [1,4]);
     });
   });
 });
