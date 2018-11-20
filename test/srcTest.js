@@ -6,5 +6,6 @@ const { increment } = lib;
 describe("increment", function(){
   it("should increment positive number", function(){
     assert.equal(increment(1), 2);
+    assert.equal(increment(4), 5);
   });
 });
