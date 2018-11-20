@@ -2,7 +2,8 @@ const assert = require('assert');
 const lib = require('../src.js');
 
 const { increment,
-  decrement } = lib;
+  decrement,
+  map } = lib;
 
 describe("increment", function(){
   it("should increment positive number", function(){
@@ -23,5 +24,13 @@ describe("decrement", function(){
   it("should decrement negative number", function(){
     assert.equal(decrement(-1), -2);
     assert.equal(decrement(-4), -5);
+  });
+});
+
+describe("map", function(){
+  describe("with increment", function(){
+    it("should increment all array elements", function(){
+      assert.deepEqual(map([], increment), []);
+    });
   });
 });
