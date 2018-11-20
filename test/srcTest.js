@@ -31,6 +31,10 @@ describe("map", function(){
   describe("with increment", function(){
     it("should increment all array elements", function(){
       assert.deepEqual(map([], increment), []);
+      assert.deepEqual(map([0], increment), [1]);
+      assert.deepEqual(map([1], increment), [2]);
+      assert.deepEqual(map([1,2], increment), [2,3]);
+      assert.deepEqual(map([1,0,2], increment), [2,1,3]);
     });
   });
 });
