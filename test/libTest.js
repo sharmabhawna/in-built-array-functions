@@ -38,7 +38,7 @@ describe("map", function(){
       assert.deepEqual(map([1], square), [1]);
       assert.deepEqual(map([1], cube), [1]);
     });
-  it("of array of any arity should return array of same arity with all of them mapped)", function(){
+  it("of array of any arity should return array of same arity with all of them mapped", function(){
       assert.deepEqual(map([-1,-2], increment), [0,-1]);
       assert.deepEqual(map([1,0,2], increment), [2,1,3]);
       assert.deepEqual(map([-1,-2], decrement), [-2,-3]);
@@ -51,23 +51,23 @@ describe("map", function(){
 });
 
 describe("filter", function(){
-  it("with empty array should return empty array", function(){
+  it("of empty array should return empty array", function(){
       assert.deepEqual(filter([], isEven), []);
       assert.deepEqual(filter([], isOdd), []);
   });
-  it("with array of any arity containing all truthy values should return same array", function(){
+  it("of array of any arity containing all truthy values should return same array", function(){
       assert.deepEqual(filter([2], isEven), [2]);
       assert.deepEqual(filter([2,4], isEven), [2,4]);
       assert.deepEqual(filter([1], isOdd), [1]);
       assert.deepEqual(filter([1,3], isOdd), [1,3]);
   });
-  it("with array of any arity containing all falsy values should return same array", function(){
+  it("of array of any arity containing all falsy values should return same array", function(){
       assert.deepEqual(filter([1], isEven), []);
       assert.deepEqual(filter([1,3], isEven), []);
       assert.deepEqual(filter([2], isOdd), []);
       assert.deepEqual(filter([2,4], isOdd), []);
   });
-  it("with array containing miscellaneous values should return array of truthy values", function(){
+  it("of array containing miscellaneous values should return array of truthy values", function(){
     assert.deepEqual(filter([1,2,3,4], isEven), [2,4]);
     assert.deepEqual(filter([1,2,3,4], isOdd), [1,3]);
   });
