@@ -9,7 +9,8 @@ const { increment,
   decrement,
   square,
   cube, 
-  isEven } = testLib;
+  isEven,
+  isOdd } = testLib;
 
 describe("increment", function(){
   it("should increment positive number", function(){
@@ -78,6 +79,15 @@ describe("filter", function(){
       assert.deepEqual(filter([2], isEven), [2]);
       assert.deepEqual(filter([1,2,3,4], isEven), [2,4]);
       assert.deepEqual(filter([-1,-2,-3,-4], isEven), [-2,-4]);
+    });
+  });
+  describe("using isOdd as callback function", function(){
+    it("should give array containing only odd numbers", function(){
+      assert.deepEqual(filter([], isOdd), []);
+      assert.deepEqual(filter([1], isOdd), [1]);
+      assert.deepEqual(filter([2], isOdd), []);
+      assert.deepEqual(filter([1,2,3,4], isOdd), [1,3]);
+      assert.deepEqual(filter([-1,-2,-3,-4], isOdd), [-1,-3]);
     });
   });
 });

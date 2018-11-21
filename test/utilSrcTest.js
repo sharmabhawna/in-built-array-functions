@@ -18,8 +18,13 @@ const isEven = function(number) {
   return number % 2 == 0;
 }
 
+const isOdd = function(number) {
+  return number % 2;
+}
+
 module.exports = { increment,
   decrement,
   square,
   cube,
-  isEven };
+  isEven,
+  isOdd };
