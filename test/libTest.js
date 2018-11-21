@@ -32,13 +32,13 @@ describe("map", function(){
       assert.deepEqual(map([], square), []);
       assert.deepEqual(map([], cube), []);
     });
-  it("of array of arity 1 should return array of arity 1(containing mapped value of that element)", function(){
+  it("of array of arity 1 should return array of arity 1 containing mapped value", function(){
       assert.deepEqual(map([1], increment), [2]);
       assert.deepEqual(map([1], decrement), [0]);
       assert.deepEqual(map([1], square), [1]);
       assert.deepEqual(map([1], cube), [1]);
     });
-  it("of array of any arity should return array of same arity(containing mapped value element of all elements)", function(){
+  it("of array of any arity should return array of same arity with all of them mapped)", function(){
       assert.deepEqual(map([-1,-2], increment), [0,-1]);
       assert.deepEqual(map([1,0,2], increment), [2,1,3]);
       assert.deepEqual(map([-1,-2], decrement), [-2,-3]);
