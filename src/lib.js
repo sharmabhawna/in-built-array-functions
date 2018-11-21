@@ -1,15 +1,15 @@
-const map = function(array, func) {
+const map = function(array, mapper) {
   let result = [];
   for(let i = 0; i < array.length; i++){
-    result.push(func(array[i]));
+    result.push(mapper(array[i]));
   }
   return result;
 }
 
-const filter = function(array, func) {
+const filter = function(array, predicate) {
   let result = [];
   for(let i = 0; i < array.length; i++){
-    if(func(array[i])){
+    if(predicate(array[i])){
       result.push(array[i]);
     }
   }
