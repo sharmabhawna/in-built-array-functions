@@ -14,7 +14,12 @@ const cube = function(number) {
   return square(number)*number;
 }
 
+const isEven = function(number) {
+  return number % 2 == 0;
+}
+
 module.exports = { increment,
   decrement,
   square,
-  cube };
+  cube,
+  isEven };

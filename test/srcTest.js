@@ -2,12 +2,14 @@ const assert = require('assert');
 const srcLib = require('../src.js');
 const testLib = require('./utilSrcTest.js');
 
-const { map } = srcLib;
+const { map, 
+  filter } = srcLib;
 
 const { increment,
   decrement,
   square,
-  cube } = testLib;
+  cube, 
+  isEven } = testLib;
 
 describe("increment", function(){
   it("should increment positive number", function(){
@@ -64,6 +66,18 @@ describe("map", function(){
   describe("with cube",function(){
     it("should cube all array elements", function(){
       assert.deepEqual(map([1,2], cube), [1,8]);
+    });
+  });
+});
+
+describe("filter", function(){
+  describe("using isEven as callback function", function(){
+    it("should give array containing only even numbers", function(){
+      assert.deepEqual(filter([], isEven), []);
+      assert.deepEqual(filter([1], isEven), []);
+      assert.deepEqual(filter([2], isEven), [2]);
+      assert.deepEqual(filter([1,2,3,4], isEven), [2,4]);
+      assert.deepEqual(filter([-1,-2,-3,-4], isEven), [-2,-4]);
     });
   });
 });

@@ -6,4 +6,15 @@ const map = function(array, func) {
   return result;
 }
 
-module.exports = { map };
+const filter = function(array, func) {
+  let result = [];
+  for(let i = 0; i < array.length; i++){
+    if(func(array[i])){
+      result.push(array[i]);
+    }
+  }
+  return result;
+}
+
+module.exports = { map,
+  filter };
