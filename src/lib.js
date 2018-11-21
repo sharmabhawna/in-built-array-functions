@@ -20,6 +20,7 @@ const reduce = function(array, reducer, accumulator) {
   let index = 0;
   if(accumulator == undefined){
     index = 1;
+    accumulator = array[0];
   }
   for(index; index < array.length; index++){
     result = reducer(array[index], accumulator);

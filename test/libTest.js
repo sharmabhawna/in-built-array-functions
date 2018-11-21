@@ -91,4 +91,26 @@ describe("reduce", function(){
     assert.equal(reduce([], findGreater, 5), 5);
     assert.equal(reduce([], findLesser, 5), 5);
   });
+  it("of any array with initial value should reduce all it's elements with initial value", function(){
+    assert.equal(reduce([1], sum, 5), 6);
+    assert.equal(reduce([1], findGreater, 5), 5);
+    assert.equal(reduce([1], findLesser, 5), 1);
+    assert.equal(reduce([1,2], sum, 5), 8);
+    assert.equal(reduce([1,2], findGreater, 5), 5);
+    assert.equal(reduce([1,2], findLesser, 5), 1);
+    assert.equal(reduce([1,2,3], sum, 5), 11);
+    assert.equal(reduce([1,2,3], findGreater, 5), 5);
+    assert.equal(reduce([1,2,3], findLesser, 5), 1);
+  });
+  it("of any array with no initial value should reduce all it's elements", function(){
+    assert.equal(reduce([1], sum, 5), 6);
+    assert.equal(reduce([1], findGreater, 5), 5);
+    assert.equal(reduce([1], findLesser, 5), 1);
+    assert.equal(reduce([1,2], sum, 5), 8);
+    assert.equal(reduce([1,2], findGreater, 5), 5);
+    assert.equal(reduce([1,2], findLesser, 5), 1);
+    assert.equal(reduce([1,2,3], sum, 5), 11);
+    assert.equal(reduce([1,2,3], findGreater, 5), 5);
+    assert.equal(reduce([1,2,3], findLesser, 5), 1);
+  });
 });
