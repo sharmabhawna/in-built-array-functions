@@ -1,11 +1,30 @@
 const assert = require('assert');
 const { map, filter } = require('../src/lib.js'); 
-const { increment,
-  decrement,
-  square,
-  cube, 
-  isEven,
-  isOdd } = require('./utilSrcTest.js'); 
+
+const increment = function(number) {
+  return ++number;
+}
+
+const decrement = function(number) {
+  return --number;
+}
+
+const square = function(number) {
+  return number*number;
+}
+
+const cube = function(number) {
+  return square(number)*number;
+}
+
+const isEven = function(number) {
+  return number % 2 == 0;
+}
+
+const isOdd = function(number) {
+  return number % 2;
+}
+
 
 describe("increment", function(){ 
   it("should increment positive number", function(){
