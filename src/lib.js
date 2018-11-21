@@ -16,5 +16,18 @@ const filter = function(array, predicate) {
   return result;
 }
 
+const reduce = function(array, reducer, accumulator) {
+  let index = 0;
+  if(accumulator == undefined){
+    index = 1;
+  }
+  for(index; index < array.length; index++){
+    result = reducer(array[index], accumulator);
+    accumulator = result;
+  }
+  return accumulator;
+}
+
 module.exports = { map,
-  filter };
+  filter,
+  reduce };

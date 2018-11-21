@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { map, filter } = require('../src/lib.js'); 
+const { map, filter, reduce } = require('../src/lib.js'); 
 
 const increment = function(number) {
   return ++number;
@@ -23,6 +23,18 @@ const isEven = function(number) {
 
 const isOdd = function(number) {
   return number % 2;
+}
+
+const sum = function(a,b) {
+  return a+b;
+}
+
+const findGreater = function(a,b) {
+  return a > b ? a : b;
+}
+
+const findLesser = function(a,b) {
+  return a < b ? a : b;
 }
 
 describe("map", function(){
@@ -70,5 +82,13 @@ describe("filter", function(){
   it("of array containing miscellaneous values should return array of truthy values", function(){
     assert.deepEqual(filter([1,2,3,4], isEven), [2,4]);
     assert.deepEqual(filter([1,2,3,4], isOdd), [1,3]);
+  });
+});
+
+describe("reduce", function(){
+  it("of empty array with initial value should return initial value", function(){
+    assert.equal(reduce([], sum, 5), 5);
+    assert.equal(reduce([], findGreater, 5), 5);
+    assert.equal(reduce([], findLesser, 5), 5);
   });
 });
