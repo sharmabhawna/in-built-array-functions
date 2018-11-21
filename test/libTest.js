@@ -1,18 +1,13 @@
 const assert = require('assert');
-const srcLib = require('../src/lib.js'); 
-const testLib = require('./utilSrcTest.js'); 
-
-const { map, 
-  filter } = srcLib;
-
+const { map, filter } = require('../src/lib.js'); 
 const { increment,
   decrement,
   square,
   cube, 
   isEven,
-  isOdd } = testLib;
+  isOdd } = require('./utilSrcTest.js'); 
 
-describe("increment", function(){
+describe("increment", function(){ 
   it("should increment positive number", function(){
     assert.equal(increment(1), 2);
     assert.equal(increment(4), 5);
