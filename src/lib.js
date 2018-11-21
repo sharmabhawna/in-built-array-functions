@@ -1,16 +1,16 @@
 const map = function(array, mapper) {
   let result = [];
-  for(let i = 0; i < array.length; i++){
-    result.push(mapper(array[i]));
+  for(value of array){
+    result.push(mapper(value));
   }
   return result;
 }
 
 const filter = function(array, predicate) {
   let result = [];
-  for(let i = 0; i < array.length; i++){
-    if(predicate(array[i])){
-      result.push(array[i]);
+  for(value of array){
+    if(predicate(value)){
+      result.push(value);
     }
   }
   return result;
