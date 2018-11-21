@@ -1,6 +1,6 @@
 const assert = require('assert');
-const srcLib = require('../src.js');
-const testLib = require('./utilSrcTest.js');
+const srcLib = require('../src/lib.js'); 
+const testLib = require('./utilSrcTest.js'); 
 
 const { map, 
   filter } = srcLib;
