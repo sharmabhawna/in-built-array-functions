@@ -91,6 +91,11 @@ describe("reduce", function(){
     assert.equal(reduce([], findGreater, 5), 5);
     assert.equal(reduce([], findLesser, 5), 5);
   });
+  it("of empty array with no initial value should return undefined", function(){
+    assert.equal(reduce([], sum), undefined);
+    assert.equal(reduce([], findGreater), undefined);
+    assert.equal(reduce([], findLesser), undefined);
+  });
   it("of any array with initial value should reduce all it's elements with initial value", function(){
     assert.equal(reduce([1], sum, 5), 6);
     assert.equal(reduce([1], findGreater, 5), 5);
