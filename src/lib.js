@@ -24,6 +24,16 @@ const filter = function(array, predicate) {
   return result;
 }
 
+const recursiveFilter = function(array, predicate, result = []) {
+  if(array.length == 0){
+    return result;
+  }
+  if(predicate(array[0])){
+    result.push(array[0]);
+  }
+  return recursiveFilter(array.slice(1), predicate, result);
+}
+
 const reduce = function(array, reducer, accumulator) {
   let index = 0;
   if(accumulator == undefined){
@@ -40,4 +50,5 @@ const reduce = function(array, reducer, accumulator) {
 module.exports = { map,
   filter,
   reduce,
-recursiveMap };
+  recursiveMap,
+  recursiveFilter };

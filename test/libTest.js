@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { map, filter, reduce, recursiveMap } = require('../src/lib.js'); 
+const { map, filter, reduce, recursiveMap, recursiveFilter } = require('../src/lib.js'); 
 
 const increment = function(number) {
   return ++number;
@@ -107,6 +107,29 @@ describe("filter", function(){
   it("of array containing miscellaneous values should return array of truthy values", function(){
     assert.deepEqual(filter([1,2,3,4], isEven), [2,4]);
     assert.deepEqual(filter([1,2,3,4], isOdd), [1,3]);
+  });
+});
+
+describe("recursiveFilter", function(){
+  it("of empty array should return empty array", function(){
+      assert.deepEqual(recursiveFilter([], isEven), []);
+      assert.deepEqual(recursiveFilter([], isOdd), []);
+  });
+  it("of array of any arity containing all truthy values should return same array", function(){
+      assert.deepEqual(recursiveFilter([2], isEven), [2]);
+      assert.deepEqual(recursiveFilter([2,4], isEven), [2,4]);
+      assert.deepEqual(recursiveFilter([1], isOdd), [1]);
+      assert.deepEqual(recursiveFilter([1,3], isOdd), [1,3]);
+  });
+  it("of array of any arity containing all falsy values should return same array", function(){
+      assert.deepEqual(recursiveFilter([1], isEven), []);
+      assert.deepEqual(recursiveFilter([1,3], isEven), []);
+      assert.deepEqual(recursiveFilter([2], isOdd), []);
+      assert.deepEqual(recursiveFilter([2,4], isOdd), []);
+  });
+  it("of array containing miscellaneous values should return array of truthy values", function(){
+    assert.deepEqual(recursiveFilter([1,2,3,4], isEven), [2,4]);
+    assert.deepEqual(recursiveFilter([1,2,3,4], isOdd), [1,3]);
   });
 });
 
