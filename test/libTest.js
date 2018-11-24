@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { map, filter, reduce } = require('../src/lib.js'); 
+const { map, filter, reduce, recursiveMap } = require('../src/lib.js'); 
 
 const increment = function(number) {
   return ++number;
@@ -59,6 +59,31 @@ describe("map", function(){
       assert.deepEqual(map([1,0,2], square), [1,0,4]);
       assert.deepEqual(map([-1,-2], cube), [-1,-8]);
       assert.deepEqual(map([-1,0,-2], cube), [-1,0,-8]);
+  });
+});
+
+describe("recursiveMap", function(){
+  it("of empty array should return empty array", function(){
+      assert.deepEqual(recursiveMap([], increment), []);
+      assert.deepEqual(recursiveMap([], decrement), []);
+      assert.deepEqual(recursiveMap([], square), []);
+      assert.deepEqual(recursiveMap([], cube), []);
+    });
+  it("of array of arity 1 should return array of arity 1 containing mapped value", function(){
+      assert.deepEqual(recursiveMap([1], increment), [2]);
+      assert.deepEqual(recursiveMap([1], decrement), [0]);
+      assert.deepEqual(recursiveMap([1], square), [1]);
+      assert.deepEqual(recursiveMap([1], cube), [1]);
+    });
+  it("of array of any arity should return array of same arity with all of them mapped", function(){
+      assert.deepEqual(recursiveMap([-1,-2], increment), [0,-1]);
+      assert.deepEqual(recursiveMap([1,0,2], increment), [2,1,3]);
+      assert.deepEqual(recursiveMap([-1,-2], decrement), [-2,-3]);
+      assert.deepEqual(recursiveMap([-1,0,-2], decrement), [-2,-1,-3]);
+      assert.deepEqual(recursiveMap([-1,-2], square), [1,4]);
+      assert.deepEqual(recursiveMap([1,0,2], square), [1,0,4]);
+      assert.deepEqual(recursiveMap([-1,-2], cube), [-1,-8]);
+      assert.deepEqual(recursiveMap([-1,0,-2], cube), [-1,0,-8]);
   });
 });
 

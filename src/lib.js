@@ -6,6 +6,14 @@ const map = function(array, mapper) {
   return result;
 }
 
+const recursiveMap = function(array, mapper, result = []) {
+  if(array.length == 0){
+    return result;
+  }
+  result.push(mapper(array[0]));
+  return recursiveMap(array.slice(1), mapper, result);
+}
+
 const filter = function(array, predicate) {
   let result = [];
   for(value of array){
@@ -31,4 +39,5 @@ const reduce = function(array, reducer, accumulator) {
 
 module.exports = { map,
   filter,
-  reduce };
+  reduce,
+recursiveMap };
