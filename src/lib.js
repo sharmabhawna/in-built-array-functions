@@ -47,8 +47,21 @@ const reduce = function(array, reducer, accumulator) {
   return accumulator;
 }
 
+const recursiveReduce = function(array, reducer, accumulator) {
+  if(accumulator == undefined){
+    accumulator = array[0];
+    array = array.slice(1);
+  }
+  if(array.length == 0){
+    return accumulator;
+  }
+  accumulator = reducer(accumulator, array[0]);
+  return recursiveReduce(array.slice(1), reducer, accumulator);
+}
+
 module.exports = { map,
   filter,
   reduce,
   recursiveMap,
-  recursiveFilter };
+  recursiveFilter,
+  recursiveReduce };

@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { map, filter, reduce, recursiveMap, recursiveFilter } = require('../src/lib.js'); 
+const { map, filter, reduce, recursiveMap, recursiveFilter, recursiveReduce } = require('../src/lib.js'); 
 
 const increment = function(number) {
   return ++number;
@@ -156,14 +156,49 @@ describe("reduce", function(){
     assert.equal(reduce([1,2,3], findLesser, 5), 1);
   });
   it("of any array with no initial value should reduce all it's elements", function(){
-    assert.equal(reduce([1], sum, 5), 6);
-    assert.equal(reduce([1], findGreater, 5), 5);
-    assert.equal(reduce([1], findLesser, 5), 1);
-    assert.equal(reduce([1,2], sum, 5), 8);
-    assert.equal(reduce([1,2], findGreater, 5), 5);
-    assert.equal(reduce([1,2], findLesser, 5), 1);
-    assert.equal(reduce([1,2,3], sum, 5), 11);
-    assert.equal(reduce([1,2,3], findGreater, 5), 5);
-    assert.equal(reduce([1,2,3], findLesser, 5), 1);
+    assert.equal(reduce([1], sum), 1);
+    assert.equal(reduce([1], findGreater), 1);
+    assert.equal(reduce([1], findLesser), 1);
+    assert.equal(reduce([1,2], sum), 3);
+    assert.equal(reduce([1,2], findGreater), 2);
+    assert.equal(reduce([1,2], findLesser), 1);
+    assert.equal(reduce([1,2,3], sum), 6);
+    assert.equal(reduce([1,2,3], findGreater), 3);
+    assert.equal(reduce([1,2,3], findLesser), 1);
+  });
+});
+
+describe("recursiveReduce", function(){
+  it("of empty array with initial value should return initial value", function(){
+    assert.equal(recursiveReduce([], sum, 5), 5);
+    assert.equal(recursiveReduce([], findGreater, 5), 5);
+    assert.equal(recursiveReduce([], findLesser, 5), 5);
+  });
+  it("of empty array with no initial value should return undefined", function(){
+    assert.equal(recursiveReduce([], sum), undefined);
+    assert.equal(recursiveReduce([], findGreater), undefined);
+    assert.equal(recursiveReduce([], findLesser), undefined);
+  });
+  it("of any array with initial value should recursiveReduce all it's elements with initial value", function(){
+    assert.equal(recursiveReduce([1], sum, 5), 6);
+    assert.equal(recursiveReduce([1], findGreater, 5), 5);
+    assert.equal(recursiveReduce([1], findLesser, 5), 1);
+    assert.equal(recursiveReduce([1,2], sum, 5), 8);
+    assert.equal(recursiveReduce([1,2], findGreater, 5), 5);
+    assert.equal(recursiveReduce([1,2], findLesser, 5), 1);
+    assert.equal(recursiveReduce([1,2,3], sum, 5), 11);
+    assert.equal(recursiveReduce([1,2,3], findGreater, 5), 5);
+    assert.equal(recursiveReduce([1,2,3], findLesser, 5), 1);
+  });
+  it("of any array with no initial value should recursiveReduce all it's elements", function(){
+    assert.equal(recursiveReduce([1], sum), 1);
+    assert.equal(recursiveReduce([1], findGreater), 1);
+    assert.equal(recursiveReduce([1], findLesser), 1);
+    assert.equal(recursiveReduce([1,2], sum), 3);
+    assert.equal(recursiveReduce([1,2], findGreater), 2);
+    assert.equal(recursiveReduce([1,2], findLesser), 1);
+    assert.equal(recursiveReduce([1,2,3], sum), 6);
+    assert.equal(recursiveReduce([1,2,3], findGreater), 3);
+    assert.equal(recursiveReduce([1,2,3], findLesser), 1);
   });
 });
